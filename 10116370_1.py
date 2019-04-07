@@ -9,6 +9,7 @@ class Simulate_case_1:
         self.z0 = 12357
         self.min = 800000
         self.max = 1000000
+        self.count = 10
 
     def multiplicative_formula(self,zi_minus_1):
         return (self.a * zi_minus_1) % self.m
@@ -21,7 +22,7 @@ class Simulate_case_1:
 
     def multiplicative_list(self):
         _list = []
-        for i in range(0,10):
+        for i in range(0,self.count):
             if i == 0:
                 zi = self.multiplicative_formula(self.z0)
                 ui = self.ui_generate(zi)
@@ -41,8 +42,19 @@ class Simulate_case_1:
         print('No.\t | Zi\t\t | Ui\t\t | x\t\t')
         print('--------------------------------------------------------------------------')
         for i in range(0,len(_list)):
-            print("| {}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
+            print("| {}\t | {:.4f} \t | {:.4f} \t | Rp {:.4f} \t |".format(i+1, _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
+
+
+    def get_mean_income(self):
+        _list = self.multiplicative_list()
+        x=0
+        for i in range(0,len(_list)):
+            x = _list[i]['X'] + x
+        mean = x/self.count
+
+        print('\n Rata-rata = ', mean)
 
 test = Simulate_case_1()
 
 test.print_table()
+test.get_mean_income()

@@ -9,6 +9,7 @@ class Simulate_case_2:
         self.m = 128
         self.z0 = 12357
         self.beta = 0.1
+        self.count = 10
 
     def multiplicative_formula(self,zi_minus_1):
         return (self.a * zi_minus_1) % self.m
@@ -21,7 +22,7 @@ class Simulate_case_2:
 
     def multiplicative_list(self):
         _list = []
-        for i in range(0,10):
+        for i in range(0,self.count):
             if i == 0:
                 zi = self.multiplicative_formula(self.z0)
                 ui = self.ui_generate(zi)
@@ -38,11 +39,21 @@ class Simulate_case_2:
 
     def print_table(self):
         _list = self.multiplicative_list()
-        print('No.\t | Zi\t\t | Ui\t\t | T\t\t')
+        print('No.\t | Zi\t\t | Ui\t\t | T(menit)\t\t')
         print('--------------------------------------------------------------------------')
         for i in range(0,len(_list)):
             print("| {}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, _list[i]['Zi'], _list[i]['Ui'], _list[i]['T']))
 
+    def get_mean_time(self):
+        _list = self.multiplicative_list()
+        x=0
+        for i in range(0,len(_list)):
+            x = _list[i]['T'] + x
+        mean = x/self.count
+
+        print('\n Rata-rata = ', mean)
+
 test = Simulate_case_2()
 
 test.print_table()
+test.get_mean_time()
