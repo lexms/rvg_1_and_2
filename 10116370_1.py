@@ -37,12 +37,29 @@ class Simulate_case_1:
 
         return _list
 
+    def month_generate(self, month_number):
+        switcher = {
+            1: "January",
+            2: "February",
+            3: "March",
+            4: "April",
+            5: "May  ",
+            6: "June ",
+            7: "July ",
+            8: "August",
+            9: "September",
+            10: "October",
+            11: "November",
+            12: "December"
+        }
+        return switcher.get(month_number, "invalid")
+
     def print_table(self):
         _list = self.multiplicative_list()
-        print('No.\t | Zi\t\t | Ui\t\t | x\t\t')
+        print('No.\t | Bulan\t |Zi\t\t | Ui\t\t | x\t\t')
         print('--------------------------------------------------------------------------')
         for i in range(0,len(_list)):
-            print("| {}\t | {:.4f} \t | {:.4f} \t | Rp {:.4f} \t |".format(i+1, _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
+            print("| {}\t | {}\t | {:.4f} \t | {:.4f} \t | Rp {:.4f} \t |".format(i+1, self.month_generate(i+1) , _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
 
 
     def get_mean_income(self):
@@ -52,7 +69,7 @@ class Simulate_case_1:
             x = _list[i]['X'] + x
         mean = x/self.count
 
-        print('\n Rata-rata = ', mean)
+        print('\n Rata-rata = Rp ', mean)
 
 test = Simulate_case_1()
 
