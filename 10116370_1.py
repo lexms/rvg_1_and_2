@@ -9,7 +9,7 @@ class Simulate_case_1:
         self.z0 = 12357
         self.min = 800000
         self.max = 1000000
-        self.count = 10
+        self.count = 24
 
     def multiplicative_formula(self,zi_minus_1):
         return (self.a * zi_minus_1) % self.m
@@ -50,16 +50,17 @@ class Simulate_case_1:
             9: "September",
             10: "October",
             11: "November",
-            12: "December"
+            0: "December"
         }
         return switcher.get(month_number, "invalid")
 
     def print_table(self):
         _list = self.multiplicative_list()
-        print('No.\t | Bulan\t |Zi\t\t | Ui\t\t | x\t\t')
-        print('--------------------------------------------------------------------------')
+        print('\n===Kasus 1===\n')
+        print('| No.\t | Bulan\t | Zi\t\t | Ui\t\t | x\t\t         |')
+        print('----------------------------------------------------------------------------------')
         for i in range(0,len(_list)):
-            print("| {}\t | {}\t | {:.4f} \t | {:.4f} \t | Rp {:.4f} \t |".format(i+1, self.month_generate(i+1) , _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
+            print("| {}\t | {}\t | {:.4f} \t | {:.4f} \t | Rp {:,.4f} \t |".format(i+1, self.month_generate((i+1)%12) , _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
 
 
     def get_mean_income(self):
@@ -69,7 +70,7 @@ class Simulate_case_1:
             x = _list[i]['X'] + x
         mean = x/self.count
 
-        print('\n Rata-rata = Rp ', mean)
+        print("\n Rata-rata = Rp {:,.4f} :".format(mean))
 
 test = Simulate_case_1()
 

@@ -18,7 +18,7 @@ class Simulate_case_2:
         return zi / self.m
 
     def t_generate(self,ui):
-        return -1*self.beta*math.log(ui)
+        return -1 * self.beta * math.log(ui)
 
     def multiplicative_list(self):
         _list = []
@@ -36,13 +36,23 @@ class Simulate_case_2:
                 _list.append({'Zi-1': zi_minus_1, 'Zi' : zi, 'Ui' : ui, 'T': t})
 
         return _list
+    
+    def deliverer_name_generate(self, driver_number):
+        switcher = {
+            1: "Charlie",
+            2: "Dimas",
+            3: "Bayu ",
+            0: "Adi  "
+        }
+        return switcher.get(driver_number,"invalid number")
 
     def print_table(self):
         _list = self.multiplicative_list()
-        print('No.\t | Zi\t\t | Ui\t\t | T(menit)\t\t')
+        print('\n===Kasus 2===\n')
+        print('| No.\t |  Nama Driver\t | Zi\t\t | Ui\t\t | T(menit)\t |')
         print('--------------------------------------------------------------------------')
         for i in range(0,len(_list)):
-            print("| {}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, _list[i]['Zi'], _list[i]['Ui'], _list[i]['T']))
+            print("| {}\t | {}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, self.deliverer_name_generate((i+1)%4), _list[i]['Zi'], _list[i]['Ui'], _list[i]['T']))
 
     def get_mean_time(self):
         _list = self.multiplicative_list()
