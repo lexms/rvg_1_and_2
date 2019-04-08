@@ -1,6 +1,7 @@
 # NIM : 10116370
 # Nama : Alexander M S
 # Kelas : MOSI-8
+
 import math
 
 class Simulate_case_2:
