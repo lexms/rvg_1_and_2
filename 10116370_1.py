@@ -62,7 +62,6 @@ class Simulate_case_1:
         for i in range(0,len(_list)):
             print("| {}\t | {}\t | {:.4f} \t | {:.4f} \t | Rp {:,.4f} \t |".format(i+1, self.month_generate((i+1)%12) , _list[i]['Zi'], _list[i]['Ui'], _list[i]['X']))
 
-
     def get_mean_income(self):
         _list = self.multiplicative_list()
         x=0
