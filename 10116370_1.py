@@ -69,10 +69,12 @@ class Simulate_case_1:
         for i in range(0,len(_list)):
             x = _list[i]['X'] + x
         mean = x/self.count
-
         print("\n Rata-rata = Rp {:,.4f} :".format(mean))
 
 test = Simulate_case_1()
-
 test.print_table()
 test.get_mean_income()
+
+
+
+

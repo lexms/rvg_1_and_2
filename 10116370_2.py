@@ -61,10 +61,8 @@ class Simulate_case_2:
         for i in range(0,len(_list)):
             x = _list[i]['T'] + x
         mean = x/self.count
-
         print('\n Rata-rata = ', mean)
 
 test = Simulate_case_2()
-
 test.print_table()
 test.get_mean_time()
