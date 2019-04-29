@@ -18,7 +18,7 @@ class Simulate_case_1:
         return zi / self.m
 
     def x_generate(self, ui):
-        return (self.min + ( (self.max - self.min) * ui) )
+        return (self.min + ( (self.max - self.min + 1 ) * ui) )
 
     def multiplicative_list(self):
         _list = []
